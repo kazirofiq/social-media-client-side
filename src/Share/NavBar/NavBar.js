@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const NavBar = () => {
+    const {user, logOut} = useContext(AuthContext);
+    const handleLogout = () =>{
+        logOut()
+        .then(() =>{})
+        .catch(err => console.log(err));
+    }
     return (
         <div className=" flex flex-wrap items-center justify-between px-2 py-3 bg-slate-900 mb-3 sticky top-0 z-30">
 
@@ -17,6 +24,13 @@ const NavBar = () => {
     <li><Link to="/media">Media</Link></li>
     <li><Link to="/message"> Message</Link></li>
     <li><Link to="/about">About</Link></li>
+    { user?.uid ? 
+                    <>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><button onClick={handleLogout}>Log Out</button></li>
+                    </> 
+                : <li><Link to="/login">Login</Link></li>
+    }
     <li><a href="https://drive.google.com/file/d/1q6Uxue2qNedCiYSSALgGJJT7c9LVHXsq/view?usp=share_link" target="_blank" rel="noopener noreferrer">download resume</a></li>
     
 
@@ -68,6 +82,13 @@ const NavBar = () => {
                 <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2 whitespace-nowrap">About</span>
                 </Link>
             </li>
+            { user?.uid ? 
+                    <>
+                        
+                        <li className="nav-item hidden lg:block "><button onClick={handleLogout}><span className=" font-bold whitespace-nowrap">Log Out</span></button></li>
+                    </> 
+                : <li><Link to="/login">Login</Link></li>
+                }
            
            
         </ul>
