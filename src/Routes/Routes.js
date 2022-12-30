@@ -1,13 +1,17 @@
 import { createBrowserRouter, Link } from "react-router-dom";
 import Main from "../layout/Main";
 import About from "../Pages/About/About";
+import EditAbout from "../Pages/About/EditAbout/EditAbout";
+import AddPost from "../Pages/Home/AddPost/AddPost";
+
 import AllPost from "../Pages/Home/AllPost/AllPost";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import Media from "../Pages/Media/Media";
+
 import Message from "../Pages/Message/Message";
 import PostDetails from "../Pages/PostDetails/PostDetails";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -30,9 +34,20 @@ export const router = createBrowserRouter([
            path: "/message" ,
            element: <Message></Message>
         },
+        
+        {
+         path: "/addpost" ,
+         element: <PrivateRoute><AddPost></AddPost></PrivateRoute>
+      }, 
         {
            path: "/about" ,
-           element: <About></About>
+           element: <About></About>,
+           loader: () => fetch('https://social-media-server-rho.vercel.app/about')
+        },
+        {
+           path: "/about/:id" ,
+           element: <EditAbout></EditAbout>,
+           loader: ({params}) => fetch(`https://social-media-server-rho.vercel.app/about/${params.id}`)
         },
         {
            path: "/login" ,
@@ -44,14 +59,16 @@ export const router = createBrowserRouter([
         },
         {
          path:'/checkout/:_id',
-         element: <PostDetails></PostDetails>,
-         loader: ({params})=> fetch(`http://localhost:5000/post/${params._id}`)
+         element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>,
+         loader: ({params})=> fetch(`https://social-media-server-rho.vercel.app/post/${params._id}`)
          
      },
 
 
       ]
+     
     },
+    
     {
         path:'*',
         element: 

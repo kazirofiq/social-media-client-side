@@ -3,7 +3,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
 
 const PostDetails = () => {
-    const {_id, title, price, img, description } = useLoaderData();
+    const {_id, title, price, image, description } = useLoaderData();
     return (
         <div>
            
@@ -11,17 +11,17 @@ const PostDetails = () => {
         <figure className="px-10 pt-10">
         
         <PhotoProvider>
-  <PhotoView src={img}>
-    <img src={img} alt="" />
-  </PhotoView>
-</PhotoProvider>
+        <PhotoView src={image}>
+            <img className='' src={image} alt="" />
+        </PhotoView>
+        </PhotoProvider>
 
-        {/* <img src={img} alt="Shoes" className="rounded-xl" /> */}
+       
         </figure>
         <div className="card-body items-center text-center">
         <h2 className="card-title">{title}</h2>
         <p>{description}</p>
-        <p className='text-red-600'>Price:{price}</p>
+        
         </div>
         </div>
 

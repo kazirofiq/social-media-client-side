@@ -39,7 +39,7 @@ const NavBar = () => {
     </div>
     <div className="navbar lg:-ml-28 ">
     <Link to='/home' className="btn btn-ghost normal-case text-3xl">
-        <h2>PORTFOLIO</h2>
+        <h2>FRNDFOEVER</h2>
      </Link>
     </div>
     <div className="navbar-end ">

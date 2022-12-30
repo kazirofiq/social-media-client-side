@@ -31,6 +31,7 @@ const SignUp = () => {
             toast('User Created Successfully.')
             const userInfo = {
                 displayName: data.name
+                
             }
             updateUser(userInfo)
             .then(() =>{
@@ -93,6 +94,7 @@ const SignUp = () => {
                         <input type="text" {...register("name", {required: "Your Name is required" })} className="input input-bordered w-full max-w-xs " />
                         {errors.name && <p className='text-red-600' role="alert">{errors.name?.message}</p>}
                     </div>
+                    
                     <div className="form-control w-full ">
                         <label className="label"><span className="label-text">Email</span></label>
                         <input type="email" {...register("email", {required: "Email Address is required" })} className="input input-bordered w-full max-w-xs " />
