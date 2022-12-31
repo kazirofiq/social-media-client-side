@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 
 const EditAbout = ({treatment}) => {
     const {_id, name, email, university, address} = treatment;
     const [user, setUser] = useState({});
+
+    const navigate = useNavigate();
     
 
 
@@ -23,47 +25,12 @@ const EditAbout = ({treatment}) => {
         .then(data => {
             if (data.modifiedCount > 0){
                 alert('user update')
+                navigate('/about');
             }
             console.log(data);
-        })
-        // const form = event.target;
-        // const name = form.name.value;
-        // const email = form.email.value;
-        // const phone = form.phone.value;
-
-        // const booking ={
-        //     appointmentDate: date,
-        //     treatment: treatmentName,
-        //     patient: name,
-            
-        //     email,
-        //     phone,
-            
+        })    
         }
-    //     // TODO: send data to the server
-    //     // and once data is saved then close the modal
-    //     // and display success toast
-    //     fetch('https://social-media-server-rho.vercel.app/about',{
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type' : 'application/json'
-    //         },
-    //         body: JSON.stringify(booking)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         if(data.acknowledged){
-    //             setTreatment(null);
-    //             toast.success('Booking Confirmed')
-    //             refetch();
-    //         }
-    //         else{
-    //             toast.error(data.message);
-    //         }
-    //     })
-        
-
-    // }
+    
 
     const handleInputChange = event =>{
         const field = event.target.name;

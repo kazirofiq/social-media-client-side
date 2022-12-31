@@ -26,12 +26,12 @@ const NavBar = () => {
     <li><Link to="/about">About</Link></li>
     { user?.uid ? 
                     <>
-                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        
                         <li><button onClick={handleLogout}>Log Out</button></li>
                     </> 
                 : <li><Link to="/login">Login</Link></li>
     }
-    <li><a href="https://drive.google.com/file/d/1q6Uxue2qNedCiYSSALgGJJT7c9LVHXsq/view?usp=share_link" target="_blank" rel="noopener noreferrer">download resume</a></li>
+    
     
 
     </ul>
@@ -39,7 +39,7 @@ const NavBar = () => {
     </div>
     <div className="navbar lg:-ml-28 ">
     <Link to='/home' className="btn btn-ghost normal-case text-3xl">
-        <h2>FRNDFOEVER</h2>
+        <img src="https://i.ibb.co/Gxw7yvF/logo.png" alt="" />
      </Link>
     </div>
     <div className="navbar-end ">

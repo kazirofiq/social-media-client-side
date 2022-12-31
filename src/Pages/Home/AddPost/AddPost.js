@@ -72,8 +72,7 @@ const AddPost = () => {
                     <textarea className="textarea textarea-bordered" placeholder="Bio" {...register("textarea", {required: "Your text is required" })}>
                     {errors.textarea && <p className='text-red-600' role="alert">{errors.textarea?.message}</p>}
                     </textarea>
-                    {/* <input type="textarea" {...register("textarea", {required: "Your text is required" })} className="input input-bordered w-full textarea textarea-bordered " />
-                    {errors.textarea && <p className='text-red-600' role="alert">{errors.textarea?.message}</p>} */}
+                    
                     
                 </div>
                 

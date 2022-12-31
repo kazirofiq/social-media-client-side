@@ -3,7 +3,7 @@ import React from 'react';
 const Message = () => {
     return (
         <div>
-            <h2>This is Message Page</h2>
+            <h2 className='font-bold text-6xl p-16 text-center'> Coming soon......</h2>
         </div>
     );
 };

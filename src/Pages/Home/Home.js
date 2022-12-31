@@ -18,7 +18,10 @@ const Home = () => {
                 
                 <AddPost></AddPost>
                 :
-                <h2>create post must <span className='text-green font-bold'><Link to='/login'>Login </Link></span> first</h2>
+                <>
+                <h2 className='text-5xl text-center font-bold my-8'>Create A Posrt</h2>
+                <h2 className='text-2xl text-center'>create post must <span className='text-teal-600 text-3xl font-bold'><Link to='/login'>Login </Link></span> first</h2>
+                </>
             }
             <AllPost></AllPost>
         </div>

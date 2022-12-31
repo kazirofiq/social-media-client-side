@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
-import {FaHeart, FaRegHeart} from 'react-icons/fa'
+import {FaComment, FaHeart, FaRegHeart} from 'react-icons/fa'
 import { AuthContext } from '../../context/AuthContext';
+import { HiUserCircle } from 'react-icons/hi';
 
 
 
@@ -44,8 +45,9 @@ const PostDetails = () => {
         <div>
            
         <div className="card w-9/12 bg-base-300 shadow-xl mx-auto mt-10 mb-20">
-        <h2 className='text-left text-lg font-bold pl-6'>{name}</h2>
-        <p>{textarea}</p>
+            
+        <h2 className='text-left flex gap-4 text-lg font-bold p-6 whitespace-nowrap'><HiUserCircle className='text-3xl'></HiUserCircle>{name}</h2>
+        <p className='p-6 text-2xl'>{textarea}</p>
         <figure className="px-10 pt-10">
         
         <PhotoProvider>
@@ -59,15 +61,30 @@ const PostDetails = () => {
         <div className="card-body items-center text-center">
         
         <div>
-        <div>
+        <div className='grid grid-cols-3  items-center'>
+            <div className='whitespace-nowrap flex justify-center items-center'>
             {
                 didlike? 
-                <FaHeart className='text-red-600 text-xl' onClick={handleLike}></FaHeart>
+                <FaHeart className='text-red-600 text-5xl' onClick={handleLike}></FaHeart>
                 
                 :
-                <FaRegHeart className='text-red-600 text-xl' onClick={handleLike}></FaRegHeart>
+                <FaRegHeart className='text-red-600 text-5xl' onClick={handleLike}></FaRegHeart>
             }
-            <p>{likers} People liked</p>
+            <p className='font-bold'>{likers} People Love</p>
+            </div>
+            <div>
+            <div tabIndex={0} className="collapse border border-base-300 bg-base-100 rounded-box"> 
+            <div >
+                <FaComment className="collapse-title text-xl font-medium"></FaComment>
+            </div>
+            <div className="collapse-content"> 
+            <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+            </div>
+            </div> 
+            </div>
+            <div>
+            <button className="btn btn-secondary">send</button>
+            </div>
         </div>
         </div>
         </div>

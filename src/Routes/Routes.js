@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
       }, 
         {
            path: "/about" ,
-           element: <About></About>,
+           element: <PrivateRoute><About></About></PrivateRoute>,
            loader: () => fetch('https://social-media-server-rho.vercel.app/about')
         },
         {

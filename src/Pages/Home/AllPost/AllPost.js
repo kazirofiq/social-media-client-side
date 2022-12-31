@@ -15,10 +15,10 @@ const AllPost = () => {
     return (
         <div>
         <div>
-            <h2 className='text-lg font-bold'>Top 3 Post</h2>
+            <h2 className='text-lg font-bold text-center my-10'>Top 3 Post</h2>
         </div>
-       <div className='grid w-1/2 mx-auto gap-4 px-10 my-10 grid-cols-1  '>
-        <h2>lenngth {service.length}</h2>
+       <div className='grid lg:w-1/2 md:w-2/3 mx-auto gap-4 px-10 my-10 grid-cols-1  '>
+        
            {
                service.map(serv => <AllServiceCard
                key={serv._id}

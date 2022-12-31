@@ -22,28 +22,28 @@ const AboutDetails = ({about, setTreatment}) => {
           </div>
              
                     <div className="overflow-x-auto">
-  <table className="table table-compact w-full">
-    <thead>
-      <tr>
-        <th></th> 
-        <th>Name</th> 
-        <th>Email</th> 
-        <th>University</th> 
-        <th>Address</th> 
-      </tr>
-    </thead> 
-    <tbody>
-      <tr>
-        <th></th> 
-        <td>{name}</td> 
-        <td>{email}</td> 
-        <td>{university}</td> 
-        <td>{address}</td> 
-        
-      </tr>
-    </tbody> 
-  </table>
-</div>
+              <table className="table table-compact w-full">
+                <thead>
+                  <tr>
+                    <th></th> 
+                    <th>Name</th> 
+                    <th>Email</th> 
+                    <th>University</th> 
+                    <th>Address</th> 
+                  </tr>
+                </thead> 
+                <tbody>
+                  <tr>
+                    <th></th> 
+                    <td>{name}</td> 
+                    <td>{email}</td> 
+                    <td>{university}</td> 
+                    <td>{address}</td> 
+                    
+                  </tr>
+                </tbody> 
+              </table>
+            </div>
         </section>
        
     );
