@@ -25,6 +25,8 @@ const Login = () => {
             const user = result.user;
             console.log(user)
             setLoginUserEmail(data.email);
+            navigate(from, {replace: true});   
+                       
             
            
         })
@@ -39,15 +41,31 @@ const Login = () => {
         providerLogin(googleProvider)
         .then(result => {
             const user = result.user;
-    
+            
     
             const currentUser = {
-                email: user.email
+                email: user.email,
+                name: user.displayName,
+                image: user.photoURL
                 
             }
+            fetch('https://social-media-server-kazirofiq.vercel.app/user', {
+
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json',
+                    
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+                    .then(result =>{
+                       navigate(from, {replace: true});   
+                       
+                    })
     
-            console.log(currentUser);
-            navigate(from, {replace: true});
+            
+            
     
             // get jwt token
         //     fetch('https://food-delevery-server-servoce.vercel.app/jwt', {

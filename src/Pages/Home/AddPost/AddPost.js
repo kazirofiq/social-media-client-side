@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
+
 
 const AddPost = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit,  formState: { errors } } = useForm();
 
     const imageHostKey = process.env.REACT_APP_imgbb_key;
@@ -13,6 +16,7 @@ const AddPost = () => {
     
 
     const handleAddProduct = data =>{
+        
         console.log(data.image[0]);
         const image = data.image[0];
         const formData = new FormData();
@@ -26,9 +30,11 @@ const AddPost = () => {
             
             .then(imgData =>{
                 if(imgData.success){
-                    const car = {
+                    const post = {
+                        name: user?.displayName,
+
                         textarea: data.textarea,
-                        email: data.email,
+                        email: user?.email,
                         price: data.price,
                         image:imgData.data.url
                     }
@@ -37,9 +43,9 @@ const AddPost = () => {
                         method: 'POST',
                         headers: {
                             'content-type' : 'application/json',
-                            // authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            
                         },
-                        body: JSON.stringify(car)
+                        body: JSON.stringify(post)
                     })
                     .then(res => res.json())
                     .then(result =>{

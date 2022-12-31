@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
 const SignUp = () => {
@@ -46,9 +46,9 @@ const SignUp = () => {
             setSignUoError(error.message);
         });
       }
-      const saveUser = (name, email) =>{
-        const user = {name, email};
-        fetch('https://car-server-kazirofiq.vercel.app/users',{
+      const saveUser = (name, email ) =>{
+        const user = {name, email, image:'https://i.ibb.co/C5Gj00w/user.png'};
+        fetch('https://social-media-server-kazirofiq.vercel.app/user',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -58,6 +58,7 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data =>{
             setCreatedUserEmail(email);
+            navigate('/home')
            
             
         })
