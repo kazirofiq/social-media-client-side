@@ -15,9 +15,6 @@ const AboutDetails = ({about, setTreatment}) => {
                      className="btn btn-primary w-2/3 uppercase text-white"
                      onClick={() => setTreatment(about)}
                      >Edit</label>
-             
-                   
-                    
                     </div>
           </div>
              
